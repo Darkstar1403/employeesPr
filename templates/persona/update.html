@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block titulo %} Editar Empleado {% endblock titulo %}
+
+
+{% block content %}
+{% include 'includes/header.html' %}
+    <div class="grid-container">
+        <div class="grid-x">   
+            <h1 class="cell">Modificar empleado</h1>
+            <div class="cell">
+                <form class="grid-x grid-margin-x" method="POST">{% csrf_token %}
+                    <div class="cell medium-6 large-6">
+                        <label>
+                            Nombres:
+                            {{form.firstName}}
+                        </label>
+                    </div>
+                    <div class="cell medium-6 large-6">
+                        <label>
+                            Apellidos:
+                            {{form.lastName}}
+                        </label>
+                    </div>
+                    <div class="medium-12 cell">
+                        <label class="top">Imagen de perfil:
+                            {{form.avatar}}
+                        </label>
+                    </div>
+                    <div class="cell medium-6 large-6">
+                        <label>
+                            Trabajo:
+                            {{form.job}}
+                        </label>
+                    </div>
+                    <div class="cell medium-6 large-6">
+                        <label>
+                            Area:
+                            {{form.department}}
+                        </label>
+                    </div>
+                    <div class="cell">
+                        <label>
+                            habilidades:
+                            {{form.habilidades}}
+                        </label>
+                    </div>
+                    <div class="cell">
+                        <label>
+                            Detalles:
+                            {{form.hoja_vida}}
+                        </label>
+                    </div>
+                    <div class="cell">
+                        <button type="submit" class="success button">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

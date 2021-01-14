@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %} {{object.fullName}} {% endblock titulo %}
+
+
+{% block content %}
+{% include 'includes/header.html' %}
+<div class="grid-container">
+    <div class="grid-x grid-margin-x align-center">
+        <div class="card large-6 cell" style="width: 300px; margin-top: 10px;">
+            <div class="card-divider">
+            <!--Como recuperas de un campo choices que es un diccionario en el modelo-->  
+            {{object.get_job_display}}
+            </div>
+            
+            {% if empleado.avatar %}
+               <img src="{{object.avatar.url}}">
+            {% else %}
+               <img src="{% static 'img/At-the-Office-Mac-Apple-Wallpapers-Creative-Planning-2982192420.jpeg' %}">
+            {% endif %}
+            <div class="card-section">
+              <h4>{{object.fullName}}</h4>
+              <p>{{object.firstName}}</p>
+              <p>{{object.lastName}}</p>
+              <p>{{object.department.shortName}}</p>
+              <p><span class="label">Habilidades</span></p>
+              <ul class="vertical menu">
+                  <!--como recuperas el arreglo de un campo many to many-->
+                  {% for habilidad in object.habilidades.all %}
+                      <li>{{habilidad}}</li>
+                  {% endfor %}      
+              </ul>
+              <p>{{object.hoja_vida}}</p>
+            </div>
+          </div>
+    </div>
+</div>
+{% endblock content %}
